@@ -55,9 +55,9 @@
                         }
                         var displayAllCounts="";
                         for (i=0; i < 4; i++){
-                            displayAllCounts += directionName[i] + ": "+ directionCounter[i] + "/n";
+                            displayAllCounts += directionName[i] + ": "+ directionCounter[i] + " | ";
                         }
-                        $(this).text(text+ " | " + displayAllCounts);
+                        $(this).text(text+  displayAllCounts);
                     },
                     //Default is 75px, set to 0 for demo so any distance triggers swipe
                     threshold: 0,
