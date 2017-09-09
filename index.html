@@ -14,8 +14,22 @@
         <![endif]-->
 
     <h1>Peter</h1>
+    <div id="test">Swipe Me!</div>
 
+    <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
+    <script>
+        $(function () {
+            $("#test").swipe({
+                //Generic swipe handler for all directions
+                swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                    $(this).text("You swiped " + direction);
+                }
+            });
 
+            //Set some options later
+            $("#test").swipe({ fingers: 2 });
+        });
+    </script>
 </body>
 
 </html>
