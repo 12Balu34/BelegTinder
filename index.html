@@ -41,8 +41,7 @@
                     //Generic swipe handler for all directions
                     swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
                         var text = "You swiped " + direction + " with " + fingerCount+ " fingers";
-                        $(this).text(text);
-
+                        
                         switch (direction) {
                             case left: directionCounter[0]++;
                                 break;
@@ -53,12 +52,11 @@
                             case down: directionCounter[3]++;
                                 break;
                         }
-                        var displayAllCounts = "";
+                        var displayAllCounts="";
                         for (i=0; i < 4; i++){
                             displayAllCounts += direction + ": "+ directionCounter[i] + "<br>";
                         }
-                        alert(text +" | "+ displayAllCounts );
-                        
+                        $(this).text(text+ " | " + displayAllCounts);
                     },
                     //Default is 75px, set to 0 for demo so any distance triggers swipe
                     threshold: 0,
