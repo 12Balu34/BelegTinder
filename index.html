@@ -33,13 +33,17 @@
     <div class="container">
 
         <script id="code_1">
+            var counter = 0;
             $(function () {
                 //Enable swiping...
                 $("#test").swipe({
                     //Generic swipe handler for all directions
                     swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                        $(this).text("You swiped " + direction + " with " + fingerCount+ " fingers");
-                        alert("Tobi stinkt")
+                        var text = "You swiped " + direction + " with " + fingerCount+ " fingers";
+                        $(this).text(text);
+                        alert(text);
+                        count++;
+                        alert(counter);
                     },
                     //Default is 75px, set to 0 for demo so any distance triggers swipe
                     threshold: 0,
