@@ -28,30 +28,30 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <body>
 
-        <div class="container">
 
-            <script id="code_1">
-                $(function () {
-                    //Enable swiping...
-                    $("#test").swipe({
-                        //Generic swipe handler for all directions
-                        swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                            $(this).text("You swiped " + direction);
-                        },
-                        //Default is 75px, set to 0 for demo so any distance triggers swipe
-                        threshold: 0
-                    });
+    <div class="container">
+
+        <script id="code_1">
+            $(function () {
+                //Enable swiping...
+                $("#test").swipe({
+                    //Generic swipe handler for all directions
+                    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                        $(this).text("You swiped " + direction);
+                    },
+                    //Default is 75px, set to 0 for demo so any distance triggers swipe
+                    threshold: 0
                 });
-            </script>
-            <div id="test" class="box">You swiped null</div>
+            });
+        </script>
+        <div id="test" class="box">You swiped null</div>
 
 
-        </div>
+    </div>
 
 
-    </body>
+
 </body>
 
 </html>
