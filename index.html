@@ -34,6 +34,7 @@
 
         <script id="code_1">
             var counter = 0;
+            var directionCounter = [0,0,0,0]; //left, right, up, down
             $(function () {
                 //Enable swiping...
                 $("#test").swipe({
@@ -41,8 +42,22 @@
                     swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
                         var text = "You swiped " + direction + " with " + fingerCount+ " fingers";
                         $(this).text(text);
-                        counter++;
-                        alert(text +" "+ counter);
+
+                        switch (direction) {
+                            case left: directionCounter[0]++;
+                                break;
+                            case right: directionCounter[1]++;
+                                break;
+                            case up: directionCounter[2]++;
+                                break;
+                            case down: directionCounter[3]++;
+                                break;
+                        }
+                        var displayAllCounts = "";
+                        for (i=0; i < 4; i++){
+                            displayAllCounts += direction + ": "+ directionCounter[i] + "<br>";
+                        }
+                        alert(text +" | "+ displayAllCounts );
                         
                     },
                     //Default is 75px, set to 0 for demo so any distance triggers swipe
