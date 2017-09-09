@@ -1,36 +1,75 @@
 <!DOCTYPE html>
 
 
+<html>
+
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="IE=9">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="http://twitter.github.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
 
-    <title>BelegTinder</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://labs.rampinteractive.co.uk/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <style>
+        @media print {
+            #ghostery-purple-box {
+                display: none !important
+            }
+        }
+    </style>
+    <script type="text/javascript" src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <script type="text/javascript" src="../jquery.touchSwipe.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
 
+    <title>touchSwipe</title>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <a href="https://github.com/mattbryson"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
+    <div class="container">
 
-    <h1>Peter</h1>
-    <div id="test">Swipe Me!</div>
-
-    
-    <script>
-        $(function () {
-            $("#test").swipe({
-                //Generic swipe handler for all directions
-                swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-                    $(this).text("You swiped " + direction);
-                }
+        <script id="code_1">
+            $(function () {
+                //Enable swiping...
+                $("#test").swipe({
+                    //Generic swipe handler for all directions
+                    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+                        $(this).text("You swiped " + direction);
+                    },
+                    //Default is 75px, set to 0 for demo so any distance triggers swipe
+                    threshold: 0
+                });
             });
+        </script>
 
-            //Set some options later
-            $("#test").swipe({ fingers: 2 });
-        });
-    </script>
+        <span class="title"><h2><a href="http://labs.rampinteractive.co.uk/touchSwipe/">TouchSwipe</a> Demo</h2><h3>to be viewed on touch based devices</h3><h1>Basic swipe<span class="navigation_menu pull-right"><select id="menu" class="pull_right"><option value="Basic_swipe.html" selected="">Basic swipe</option><option value="Single_swipe.html">Single swipe</option><option value="Any_finger_swipe.html">Any finger swipe</option><option value="Finger_swipe.html">Finger swipe</option><option value="Swipe_status.html">Swipe status</option><option value="Pinch.html">Pinch</option><option value="Pinch_status.html">Pinch status</option><option value="Pinch_and_Swipe.html">Pinch and Swipe</option><option value="Trigger_handlers.html">Trigger handlers</option><option value="Stop_propegation.html">Stop propegation</option><option value="Handlers_and_events.html">Handlers and events</option><option value="Tap_vs_swipe.html">Tap vs swipe</option><option value="Hold.html">Hold</option><option value="Excluded_children.html">Excluded children</option><option value="Page_zoom.html">Page zoom</option><option value="Thresholds.html">Thresholds</option><option value="Enable_and_destroy.html">Enable and destroy</option><option value="Page_scrolling.html">Page scrolling</option><option value="Options.html">Options</option><option value="Image_gallery_example.html">Image gallery example</option></select></span></h1>
+        </span>
+        <h4>events: <span class="events"><code>swipe</code>,<code>swipeLeft</code>, <code>swipeRight</code>, <code>swipeUp</code>, <code>swipeDown</code></span></h4>
+        <p>By using the <code>swipe</code> handler, you can detect all 4 directions, or use the individual methods <code>swipeLeft</code>,
+            <code>swipeRight</code>, <code>swipeUp</code>, <code>swipeDown</code></p>
+
+        <button class="btn btn-small btn-info example_btn">Jump to Example</button>
+        <pre class="prettyprint" data-src="code_1">    $(function() {      
+  //Enable swiping...
+  $("#test").swipe( {
+    //Generic swipe handler for all directions
+    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+      $(this).text("You swiped " + direction );  
+    },
+    //Default is 75px, set to 0 for demo so any distance triggers swipe
+     threshold:0
+  });
+});
+</pre>
+        <span class="navigation"><div class="pagination"><a class="pull-right btn" href="Single_swipe.html">Single swipe &gt;&gt;</a></div><div class="clear"></div></span>
+
+        <div id="test" class="box">Swipe me</div>
+
+        <span class="navigation"><div class="pagination"><a class="pull-right btn" href="Single_swipe.html">Single swipe &gt;&gt;</a></div><div class="clear"></div></span>
+    </div>
+
+
 </body>
 
 </html>
