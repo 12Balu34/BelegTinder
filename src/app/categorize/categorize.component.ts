@@ -11,14 +11,15 @@ export class CategorizeComponent implements OnInit {
   type: string;
   selectedDocumentType: string;
   allDocumentTypes: string[];
+  category: { name: string; id: string; availableTypes: { name: string }[] };
 
   constructor(private route: ActivatedRoute, private service: DocumentTypesService) {
   }
 
   ngOnInit() {
     this.refreshRouterParameters(this.route.snapshot.params);
-    const category = this.service.getCategory(this.type);
-    this.allDocumentTypes = category.availableTypes.map(t => t.name);
+    this.category = this.service.getCategory(this.type);
+    this.allDocumentTypes = this.category.availableTypes.map(t => t.name);
   }
 
   private refreshRouterParameters(params: Params) {
