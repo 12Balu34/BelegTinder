@@ -8,6 +8,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class CategorizeComponent implements OnInit {
   type: string;
+  documentType: string;
 
   constructor(private route: ActivatedRoute) {
   }

@@ -2,9 +2,13 @@
   Belegtyp wählen:
 </p>
 
-<input type="radio" name="gender" value="male"> Male<br>
-<input type="radio" name="gender" value="female"> Female<br>
-<input type="radio" name="gender" value="other"> Other
+<input type="radio" name="document_type" value="doctype1" [(ngModel)]="documentType">Hauptsitz<br>
+<input type="radio" name="document_type" value="doctype2" [(ngModel)]="documentType">Filiale 1<br>
+<input type="radio" name="document_type" value="doctype3" [(ngModel)]="documentType">Filiale 2
+
+<p>
+  {{documentType}}
+</p>
 
 <p>
   <a routerLink="/dashboard">Zurück</a>
