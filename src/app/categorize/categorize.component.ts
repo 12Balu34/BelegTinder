@@ -8,7 +8,7 @@ import {DocumentTypesService} from "../shared/document-types.service";
   styleUrls: ["./categorize.component.css"],
 })
 export class CategorizeComponent implements OnInit {
-  type: string;
+  id: string;
   selectedDocumentType: string;
   allDocumentTypes: string[];
   category: { name: string; id: string; availableTypes: { name: string }[] };
@@ -18,11 +18,11 @@ export class CategorizeComponent implements OnInit {
 
   ngOnInit() {
     this.refreshRouterParameters(this.route.snapshot.params);
-    this.category = this.service.getCategory(this.type);
+    this.category = this.service.getCategory(this.id);
     this.allDocumentTypes = this.category.availableTypes.map(t => t.name);
   }
 
   private refreshRouterParameters(params: Params) {
-    this.type = params.type;
+    this.id = params.id;
   }
 }

@@ -7,12 +7,14 @@ import {CategorizeComponent} from "./categorize/categorize.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {FormsModule} from "@angular/forms";
 import {DocumentTypesService} from "./shared/document-types.service";
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategorizeComponent,
     DashboardComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
