@@ -257,7 +257,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<img src=\"assets/images/invoice1.png\">\n\n<a [routerLink]=\"['/categorize', 'incoming_invoice']\">Rechnungseingang</a>\n<a [routerLink]=\"['/categorize', 'outgoing_invoice']\">Rechnungsausgang</a>\n<a [routerLink]=\"['/categorize', 'cash_register']\">Kasse</a>\n<a [routerLink]=\"['/categorize', 'other']\">Sonstige</a>\n"
+module.exports = "<img class=\"invoice\" src=\"assets/images/invoice1.png\">\n\n<a [routerLink]=\"['/categorize', 'incoming_invoice']\">Rechnungseingang</a>\n<a [routerLink]=\"['/categorize', 'outgoing_invoice']\">Rechnungsausgang</a>\n<a [routerLink]=\"['/categorize', 'cash_register']\">Kasse</a>\n<a [routerLink]=\"['/categorize', 'other']\">Sonstige</a>\n"
 
 /***/ }),
 
