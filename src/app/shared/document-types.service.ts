@@ -1,4 +1,6 @@
 import {Injectable} from "@angular/core";
+import {Category} from './category';
+import {DocumentType} from './document-type';
 
 @Injectable()
 export class DocumentTypesService {
@@ -13,42 +15,35 @@ export class DocumentTypesService {
     return found
   }
 
+  private categories: Category[] = [
+    new Category("Rechnungseingang","incoming_invoice",
+      [
+        new DocumentType("Hauptsitz"),
+        new DocumentType("Filiale 1"),
+        new DocumentType("Filiale 2"),
+      ]
+    ),
+
+    new Category("Rechnungsausgang", "outgoing_invoice",
+      [
+        new DocumentType("Hauptsitz"),
+      ],
+    ),
+
+    new Category("Kasse","cash_register",
+      [
+        new DocumentType("Hauptsitz"),
+      ],
+    ),
+
+    new Category("Sonstige","other",[
+        new DocumentType("Hauptsitz"),
+      ],
+    ),
+  ];
+
   getAllCategories() {
-    return [
-      {
-        name: "Rechnungseingang",
-        id: "incoming_invoice",
-        availableTypes: [
-          {name: "Hauptsitz"},
-          {name: "Filiale 1"},
-          {name: "Filiale 2"},
-        ],
-      },
-
-      {
-        name: "Rechnungsausgang",
-        id: "outgoing_invoice",
-        availableTypes: [
-          {name: "Hauptsitz"},
-        ],
-      },
-
-      {
-        name: "Kasse",
-        id: "cash_register",
-        availableTypes: [
-          {name: "Hauptsitz"},
-        ],
-      },
-
-      {
-        name: "Sonstige",
-        id: "other",
-        availableTypes: [
-          {name: "Hauptsitz"},
-        ],
-      },
-    ]
+    return this.categories
   }
 
 }

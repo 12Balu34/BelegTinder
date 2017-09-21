@@ -1,3 +1,10 @@
+<h1>{{currentDocument.category}}</h1>
+<h2>{{currentDocument.type}}</h2>
 <p>
-  list works!
+  <img src="assets/images/{{currentDocument.image}}">
 </p>
+
+<a (click)="previousDocument()">Zurück</a>
+<a (click)="nextDocument()">Vor</a>
+
+<button>Rückgängig</button>

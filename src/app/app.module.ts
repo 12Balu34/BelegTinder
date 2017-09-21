@@ -7,7 +7,8 @@ import {CategorizeComponent} from "./categorize/categorize.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {FormsModule} from "@angular/forms";
 import {DocumentTypesService} from "./shared/document-types.service";
-import { ListComponent } from './list/list.component';
+import {ListComponent} from "./list/list.component";
+import {DocumentsService} from "./shared/documents.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { ListComponent } from './list/list.component';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [DocumentTypesService],
+  providers: [DocumentTypesService, DocumentsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

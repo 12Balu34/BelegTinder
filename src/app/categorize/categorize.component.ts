@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {DocumentTypesService} from "../shared/document-types.service";
+import {Category} from '../shared/category';
 
 @Component({
   selector: "app-categorize",
@@ -11,7 +12,7 @@ export class CategorizeComponent implements OnInit {
   id: string;
   selectedDocumentType: string;
   allDocumentTypes: string[];
-  category: { name: string; id: string; availableTypes: { name: string }[] };
+  category: Category;
 
   constructor(private route: ActivatedRoute, private service: DocumentTypesService) {
   }
