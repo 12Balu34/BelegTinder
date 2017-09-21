@@ -1,14 +1,12 @@
+<h1>{{type}}</h1>
+
 <p>
   Belegtyp wählen:
 </p>
 
-<input type="radio" name="document_type" value="doctype1" [(ngModel)]="documentType">Hauptsitz<br>
-<input type="radio" name="document_type" value="doctype2" [(ngModel)]="documentType">Filiale 1<br>
-<input type="radio" name="document_type" value="doctype3" [(ngModel)]="documentType">Filiale 2
-
-<p>
-  {{documentType}}
-</p>
+<span *ngFor="let documentType of allDocumentTypes">
+  <input type="radio" name="document_type" value="{{documentType}}"> {{documentType}} <br>
+</span>
 
 <p>
   <a routerLink="/dashboard">Zurück</a>
