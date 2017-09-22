@@ -10,12 +10,16 @@ export class DocumentsService {
     new Document(3, 'invoice3.jpg'),
     new Document(4, 'invoice4.jpg'),
     new Document(5, 'invoice5.png'),
+    new Document(6, 'invoice6.jpg'),
+    new Document(7, 'invoice7.jpg'),
+    new Document(8, 'invoice8.jpg')
   ];
 
   constructor() {
   }
 
   getAllDocuments(): Document[] {
+    // return [];
     return this.documents;
   }
 
