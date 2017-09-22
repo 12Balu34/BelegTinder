@@ -6,13 +6,13 @@ a {
 h1 {
     color: rgb(3, 154, 154);
     position: relative;
-    left: 20px;    
+    left: 20px;
 }
 
 h3 {
     color: rgba(102, 109, 109, 0.81);
     position: relative;
-    left: 20px;  
+    left: 20px;
 }
 
 p {
@@ -37,5 +37,5 @@ body {
 }
 
 #green-heart {
-    color:green;
+    color: #22FE00;
 }
