@@ -33,4 +33,5 @@ body {
 
 .img-responsive {
     padding: 15px;
+    background-color: rgba(245, 245, 238, 0.86);
 }
