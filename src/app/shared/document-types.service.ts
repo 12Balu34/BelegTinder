@@ -8,6 +8,8 @@ export class DocumentTypesService {
   constructor() {
   }
 
+  private nothing = new DocumentType("Keine Auswahl");
+
   getCategory(id: string) {
     const [found] = this
       .getAllCategories()
@@ -18,6 +20,7 @@ export class DocumentTypesService {
   private categories: Category[] = [
     new Category("Rechnungseingang","incoming_invoice",
       [
+        this.nothing,
         new DocumentType("Hauptsitz"),
         new DocumentType("Filiale 1"),
         new DocumentType("Filiale 2"),
@@ -26,18 +29,21 @@ export class DocumentTypesService {
 
     new Category("Rechnungsausgang", "outgoing_invoice",
       [
+        this.nothing,
         new DocumentType("Hauptsitz"),
       ],
     ),
 
     new Category("Kasse","cash_register",
       [
+        this.nothing,
         new DocumentType("Hauptsitz"),
       ],
     ),
 
     new Category("Sonstige","other",[
-        new DocumentType("Hauptsitz"),
+      this.nothing,
+      new DocumentType("Hauptsitz"),
       ],
     ),
   ];

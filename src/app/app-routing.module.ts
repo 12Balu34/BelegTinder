@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: "dashboard", component: DashboardComponent},
   {path: "list", component: ListComponent},
   {path: "list/:index", component: ListComponent},
-  {path: "categorize/:id", component: CategorizeComponent},
+  {path: "categorize/:category/:document", component: CategorizeComponent},
 ];
 
 @NgModule({

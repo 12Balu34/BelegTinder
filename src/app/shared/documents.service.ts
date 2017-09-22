@@ -5,17 +5,23 @@ import {Document} from './document';
 export class DocumentsService {
 
   private documents = [
-    new Document('invoice1.png'),
-    new Document('invoice2.png'),
-    new Document('invoice3.jpg'),
-    new Document('invoice4.jpg'),
-    new Document('invoice5.png'),
+    new Document(1, 'invoice1.png'),
+    new Document(2, 'invoice2.png'),
+    new Document(3, 'invoice3.jpg'),
+    new Document(4, 'invoice4.jpg'),
+    new Document(5, 'invoice5.png'),
   ];
 
   constructor() {
   }
 
-  getAllDocuments() {
+  getAllDocuments(): Document[] {
     return this.documents;
+  }
+
+  getDocument(documentId: number) {
+    return this
+      .getAllDocuments()
+      .filter(d => d.id === documentId)[0];
   }
 }

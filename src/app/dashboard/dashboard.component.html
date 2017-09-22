@@ -6,10 +6,10 @@
 >
   <img
     class="mySlides img-responsive"
-    src="assets/images/invoice1.png">
+    [src]="'assets/images/' + document.image">
 </div>
 
-<a [routerLink]="['/categorize', 'incoming_invoice']">Rechnungseingang</a>
-<a [routerLink]="['/categorize', 'outgoing_invoice']">Rechnungsausgang</a>
-<a [routerLink]="['/categorize', 'cash_register']">Kasse</a>
-<a [routerLink]="['/categorize', 'other']">Sonstige</a>
+<a [routerLink]="['/categorize', 'incoming_invoice', document.id]">Rechnungseingang</a>
+<a [routerLink]="['/categorize', 'outgoing_invoice', document.id]">Rechnungsausgang</a>
+<a [routerLink]="['/categorize', 'cash_register', document.id]">Kasse</a>
+<a [routerLink]="['/categorize', 'other', document.id]">Sonstige</a>
