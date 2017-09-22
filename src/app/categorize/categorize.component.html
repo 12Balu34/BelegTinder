@@ -5,7 +5,9 @@
 <h3>
 
 <p *ngFor="let documentType of allDocumentTypes">
-  <input type="radio" name="document_type" value="{{documentType}}" [(ngModel)]="selectedDocumentType"> {{documentType}} <br>
+  <label>
+    <input type="radio" name="document_type" value="{{documentType}}" [(ngModel)]="selectedDocumentType"> {{documentType}} <br>
+  </label>
 </p>
 
 <div>
