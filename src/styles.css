@@ -36,6 +36,10 @@ body {
     background-color: rgba(245, 245, 238, 0.86);
 }
 
+#send {
+  alignment: center;
+}
+
 #green-heart {
     color: #22FE00;
 }

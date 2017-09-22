@@ -97,7 +97,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\na {\n    color: rgb(3, 154, 154);\n}\n\nh1 {\n    color: rgb(3, 154, 154);\n    position: relative;\n    left: 20px;\n}\n\nh3 {\n    color: rgba(102, 109, 109, 0.81);\n    position: relative;\n    left: 20px;\n}\n\np {\n    color:grey;\n    font-size: 16px;\n}\n\nbody {\n    background-color: rgba(245, 245, 238, 0.86);\n}\n\n.categoryBackLink {\n    color: rgb(3, 154, 154);\n    position: relative;\n    left:-15px;\n    font-size: 16px;\n}\n\n.img-responsive {\n    padding: 15px;\n    background-color: rgba(245, 245, 238, 0.86);\n}\n\n#green-heart {\n    color: #22FE00;\n}\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\na {\n    color: rgb(3, 154, 154);\n}\n\nh1 {\n    color: rgb(3, 154, 154);\n    position: relative;\n    left: 20px;\n}\n\nh3 {\n    color: rgba(102, 109, 109, 0.81);\n    position: relative;\n    left: 20px;\n}\n\np {\n    color:grey;\n    font-size: 16px;\n}\n\nbody {\n    background-color: rgba(245, 245, 238, 0.86);\n}\n\n.categoryBackLink {\n    color: rgb(3, 154, 154);\n    position: relative;\n    left:-15px;\n    font-size: 16px;\n}\n\n.img-responsive {\n    padding: 15px;\n    background-color: rgba(245, 245, 238, 0.86);\n}\n\n#send {\n  alignment: center;\n}\n\n#green-heart {\n    color: #22FE00;\n}\n", ""]);
 
 // exports
 
