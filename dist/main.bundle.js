@@ -38,7 +38,7 @@ var routes = [
     { path: "", redirectTo: "dashboard", pathMatch: "full" },
     { path: "dashboard", component: __WEBPACK_IMPORTED_MODULE_3__dashboard_dashboard_component__["a" /* DashboardComponent */] },
     { path: "list", component: __WEBPACK_IMPORTED_MODULE_4__list_list_component__["a" /* ListComponent */] },
-    { path: "list/:index", component: __WEBPACK_IMPORTED_MODULE_4__list_list_component__["a" /* ListComponent */] },
+    { path: "list/:category", component: __WEBPACK_IMPORTED_MODULE_4__list_list_component__["a" /* ListComponent */] },
     { path: "categorize/:category/:document", component: __WEBPACK_IMPORTED_MODULE_2__categorize_categorize_component__["a" /* CategorizeComponent */] },
 ];
 var AppRoutingModule = (function () {
@@ -319,7 +319,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div\n  (swipeleft)=\"swipe($event.type)\"\n  (swiperight)=\"swipe($event.type)\"\n  (swipeup)=\"swipe($event.type)\"\n  (swipedown)=\"swipe($event.type)\"\n>\n  <img\n    class=\"mySlides img-responsive\"\n    [src]=\"'assets/images/' + document.image\">\n</div>\n\n<a [routerLink]=\"['/categorize', 'incoming_invoice', document.id]\">Rechnungseingang</a>\n<a [routerLink]=\"['/categorize', 'outgoing_invoice', document.id]\">Rechnungsausgang</a>\n<a [routerLink]=\"['/categorize', 'cash_register', document.id]\">Kasse</a>\n<a [routerLink]=\"['/categorize', 'other', document.id]\">Sonstige</a>\n"
+module.exports = "<div *ngIf=\"!hasMoreDocuments()\">\n  Keine weiteren nicht zugeordneten Belege vorhanden!\n</div>\n\n<div *ngIf=\"hasMoreDocuments()\"\n  (swipeleft)=\"swipe($event.type)\"\n  (swiperight)=\"swipe($event.type)\"\n  (swipeup)=\"swipe($event.type)\"\n  (swipedown)=\"swipe($event.type)\"\n>\n  <img\n    class=\"mySlides img-responsive\"\n    [src]=\"'assets/images/' + document.image\">\n</div>\n\n<a [routerLink]=\"['/list', 'incoming_invoice']\">Rechnungseingang</a>\n<a [routerLink]=\"['/list', 'outgoing_invoice']\">Rechnungsausgang</a>\n<a [routerLink]=\"['/list', 'cash_register']\">Kasse</a>\n<a [routerLink]=\"['/list', 'other']\">Sonstige</a>\n"
 
 /***/ }),
 
@@ -367,6 +367,9 @@ var DashboardComponent = (function () {
             .filter(function (d) { return !d.category; });
         this.document = this.documents[0];
     };
+    DashboardComponent.prototype.hasMoreDocuments = function () {
+        return this.documents.length > 0;
+    };
     return DashboardComponent;
 }());
 DashboardComponent = __decorate([
@@ -404,7 +407,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/list/list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>{{currentDocument.category}}</h1>\n<h2>{{currentDocument.type}}</h2>\n<p>\n  <img src=\"assets/images/{{currentDocument.image}}\">\n</p>\n\n<a (click)=\"previousDocument()\">Zurück</a>\n<a (click)=\"nextDocument()\">Vor</a>\n\n<button>Rückgängig</button>\n"
+module.exports = "<div *ngIf=\"!hasDocuments()\">\n  Keine Belege vorhanden!\n</div>\n\n<div *ngIf=\"hasDocuments()\">\n  <h1>{{categoryName}}</h1>\n  <h2>{{currentDocument.type}}</h2>\n  <div\n    (swipeup)=\"swipe($event.type)\"\n    (swipedown)=\"swipe($event.type)\"\n    (swipeleft)=\"swipe($event.type)\"\n    (swiperight)=\"swipe($event.type)\"\n  >\n    <img src=\"assets/images/{{currentDocument.image}}\">\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -416,6 +419,7 @@ module.exports = "<h1>{{currentDocument.category}}</h1>\n<h2>{{currentDocument.t
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__shared_documents_service__ = __webpack_require__("../../../../../src/app/shared/documents.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_document_types_service__ = __webpack_require__("../../../../../src/app/shared/document-types.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -428,16 +432,54 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ListComponent = (function () {
-    function ListComponent(route, service) {
+    function ListComponent(route, router, documentsService, documentTypesService) {
         this.route = route;
-        this.service = service;
+        this.router = router;
+        this.documentsService = documentsService;
+        this.documentTypesService = documentTypesService;
         this.currentIndex = 0;
     }
+    Object.defineProperty(ListComponent.prototype, "categoryName", {
+        get: function () {
+            if (!this.currentDocument) {
+                return;
+            }
+            var category = this.documentTypesService
+                .getCategory(this.currentDocument.category);
+            return category.name;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ListComponent.prototype.ngOnInit = function () {
+        var _this = this;
         this.refreshRouteParameters(this.route.snapshot.params);
-        this.documents = this.service.getAllDocuments();
+        console.log(this.categoryId);
+        this.documentsInCategory = this.documentsService
+            .getAllDocuments()
+            .filter(function (d) { return d.category === _this.categoryId; });
         this.refreshDocument();
+    };
+    ListComponent.prototype.hasDocuments = function () {
+        return this.documentsInCategory && this.documentsInCategory.length > 0;
+    };
+    ListComponent.prototype.swipe = function (action) {
+        var _this = this;
+        console.log('swipe it baby!' + action + this.currentIndex);
+        var actions = [
+            { swipe: 'up', action: function () { return _this.navigateBack(); } },
+            { swipe: 'down', action: function () { return _this.undoCategorization(); } },
+            { swipe: 'left', action: function () { return _this.previousDocument(); } },
+            { swipe: 'right', action: function () { return _this.nextDocument(); } },
+        ];
+        var found = actions
+            .filter(function (a) { return 'swipe' + a.swipe === action; })
+            .map(function (a) { return a.action; })[0];
+        if (found) {
+            found();
+        }
     };
     ListComponent.prototype.previousDocument = function () {
         if (this.currentIndex <= 0) {
@@ -447,17 +489,27 @@ var ListComponent = (function () {
         this.refreshDocument();
     };
     ListComponent.prototype.nextDocument = function () {
-        if (this.currentIndex >= this.documents.length) {
+        if (this.currentIndex >= this.documentsInCategory.length - 1) {
             return;
         }
         this.currentIndex++;
         this.refreshDocument();
     };
+    ListComponent.prototype.undoCategorization = function () {
+        if (this.currentDocument) {
+            this.currentDocument.type = undefined;
+            this.currentDocument.category = undefined;
+        }
+        this.router.navigate(['/dashboard']);
+    };
     ListComponent.prototype.refreshRouteParameters = function (params) {
-        this.currentIndex = params.index || 0;
+        this.categoryId = params.category;
     };
     ListComponent.prototype.refreshDocument = function () {
-        this.currentDocument = this.documents[this.currentIndex];
+        this.currentDocument = this.documentsInCategory[this.currentIndex];
+    };
+    ListComponent.prototype.navigateBack = function () {
+        this.router.navigate(['/dashboard']);
     };
     return ListComponent;
 }());
@@ -467,10 +519,10 @@ ListComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/list/list.component.html"),
         styles: [__webpack_require__("../../../../../src/app/list/list.component.css")],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__shared_documents_service__["a" /* DocumentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_documents_service__["a" /* DocumentsService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__shared_documents_service__["a" /* DocumentsService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__shared_documents_service__["a" /* DocumentsService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__shared_document_types_service__["a" /* DocumentTypesService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_document_types_service__["a" /* DocumentTypesService */]) === "function" && _d || Object])
 ], ListComponent);
 
-var _a, _b;
+var _a, _b, _c, _d;
 //# sourceMappingURL=list.component.js.map
 
 /***/ }),

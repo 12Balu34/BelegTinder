@@ -1,4 +1,8 @@
-<div
+<div *ngIf="!hasMoreDocuments()">
+  Keine weiteren nicht zugeordneten Belege vorhanden!
+</div>
+
+<div *ngIf="hasMoreDocuments()"
   (swipeleft)="swipe($event.type)"
   (swiperight)="swipe($event.type)"
   (swipeup)="swipe($event.type)"
@@ -9,7 +13,7 @@
     [src]="'assets/images/' + document.image">
 </div>
 
-<a [routerLink]="['/categorize', 'incoming_invoice', document.id]">Rechnungseingang</a>
-<a [routerLink]="['/categorize', 'outgoing_invoice', document.id]">Rechnungsausgang</a>
-<a [routerLink]="['/categorize', 'cash_register', document.id]">Kasse</a>
-<a [routerLink]="['/categorize', 'other', document.id]">Sonstige</a>
+<a [routerLink]="['/list', 'incoming_invoice']">Rechnungseingang</a>
+<a [routerLink]="['/list', 'outgoing_invoice']">Rechnungsausgang</a>
+<a [routerLink]="['/list', 'cash_register']">Kasse</a>
+<a [routerLink]="['/list', 'other']">Sonstige</a>
