@@ -30,6 +30,12 @@ body {
     left:-15px;
     font-size: 16px;
 }
+.categoryDashboardLink {
+    color: rgb(3, 154, 154);
+    position: relative;
+    left:20px;
+    font-size: 16px;
+}
 
 .img-responsive {
     padding: 15px;
@@ -38,4 +44,5 @@ body {
 
 #green-heart {
     color:green;
+    font-size: 150%;
 }

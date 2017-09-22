@@ -19,7 +19,7 @@ export class DocumentsService {
   }
 
   getAllDocuments(): Document[] {
-    // return [];
+    return [];
     return this.documents;
   }
 
