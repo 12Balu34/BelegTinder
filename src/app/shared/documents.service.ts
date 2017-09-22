@@ -5,21 +5,19 @@ import {Document} from './document';
 export class DocumentsService {
 
   private documents = [
-    new Document(1, 'invoice1.png'),
-    new Document(2, 'invoice2.png'),
-    new Document(3, 'invoice3.jpg'),
-    new Document(4, 'invoice4.jpg'),
-    new Document(5, 'invoice5.png'),
     new Document(6, 'invoice6.jpg'),
     new Document(7, 'invoice7.jpg'),
-    new Document(8, 'invoice8.jpg')
+    new Document(8, 'invoice8.jpg'),
+    new Document(9, 'invoice9.png'),
+    new Document(10, 'invoice10.png'),
+    new Document(11, 'invoice11.png'),
   ];
 
   constructor() {
   }
 
   getAllDocuments(): Document[] {
-    return [];
+    // return [];
     return this.documents;
   }
 
