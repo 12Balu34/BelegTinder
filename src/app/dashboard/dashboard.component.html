@@ -1,22 +1,25 @@
-<div class="col-md-4 text-center">
-  <div *ngIf="!hasMoreDocuments()">
-    <h1>Keine weiteren Belege zum Zuordnen!</h1>
-    <h3>Scheint, als hättest du deinen Typ gefunden <span id="green-heart">♥</span></h3>
-    <button class="btn btn-primary btn-lg">Senden</button>
-  </div>
+<div class="container">
+  <div class="fill text-center">
+    <div *ngIf="!hasMoreDocuments()">
+      <h1>Keine weiteren Belege zum Zuordnen!</h1>
+      <h3>Scheint, als hättest du deinen Typ gefunden <span id="green-heart">♥</span></h3>
+      <button class="btn btn-primary btn-lg">Senden</button>
+    </div>
 
-  <div *ngIf="hasMoreDocuments()"
-       (swipeleft)="swipe($event.type)"
-       (swiperight)="swipe($event.type)"
-       (swipeup)="swipe($event.type)"
-       (swipedown)="swipe($event.type)"
-  >
-    <img
-      class="mySlides img-responsive"
-      [src]="'assets/images/' + document.image">
-  </div>
+    <div *ngIf="hasMoreDocuments()"
+         (swipeleft)="swipe($event.type)"
+         (swiperight)="swipe($event.type)"
+         (swipeup)="swipe($event.type)"
+         (swipedown)="swipe($event.type)"
+    >
+      <img
+        class="mySlides img-responsive"
+        [src]="'assets/images/' + document.image">
+    </div>
 
-<a class="categoryDashboardLink" [routerLink]="['/list', 'incoming_invoice']">Rechnungseingang</a>
-<a class="categoryDashboardLink" [routerLink]="['/list', 'outgoing_invoice']">Rechnungsausgang</a>
-<a class="categoryDashboardLink" [routerLink]="['/list', 'cash_register']">Kasse</a>
-<a class="categoryDashboardLink" [routerLink]="['/list', 'other']">Sonstige</a>
+    <a class="categoryDashboardLink" [routerLink]="['/list', 'incoming_invoice']">Rechnungseingang</a>
+    <a class="categoryDashboardLink" [routerLink]="['/list', 'outgoing_invoice']">Rechnungsausgang</a>
+    <a class="categoryDashboardLink" [routerLink]="['/list', 'cash_register']">Kasse</a>
+    <a class="categoryDashboardLink" [routerLink]="['/list', 'other']">Sonstige</a>
+  </div>
+</div>

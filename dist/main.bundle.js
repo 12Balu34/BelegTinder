@@ -319,7 +319,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-4 text-center\">\n  <div *ngIf=\"!hasMoreDocuments()\">\n    <h1>Keine weiteren Belege zum Zuordnen!</h1>\n    <h3>Scheint, als hättest du deinen Typ gefunden <span id=\"green-heart\">♥</span></h3>\n    <button class=\"btn btn-primary btn-lg\">Senden</button>\n  </div>\n\n  <div *ngIf=\"hasMoreDocuments()\"\n       (swipeleft)=\"swipe($event.type)\"\n       (swiperight)=\"swipe($event.type)\"\n       (swipeup)=\"swipe($event.type)\"\n       (swipedown)=\"swipe($event.type)\"\n  >\n    <img\n      class=\"mySlides img-responsive\"\n      [src]=\"'assets/images/' + document.image\">\n  </div>\n\n  <a [routerLink]=\"['/list', 'incoming_invoice']\">Rechnungseingang</a>\n  <a [routerLink]=\"['/list', 'outgoing_invoice']\">Rechnungsausgang</a>\n  <a [routerLink]=\"['/list', 'cash_register']\">Kasse</a>\n  <a [routerLink]=\"['/list', 'other']\">Sonstige</a>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div class=\"fill text-center\">\n    <div *ngIf=\"!hasMoreDocuments()\">\n      <h1>Keine weiteren Belege zum Zuordnen!</h1>\n      <h3>Scheint, als hättest du deinen Typ gefunden <span id=\"green-heart\">♥</span></h3>\n      <button class=\"btn btn-primary btn-lg\">Senden</button>\n    </div>\n\n    <div *ngIf=\"hasMoreDocuments()\"\n         (swipeleft)=\"swipe($event.type)\"\n         (swiperight)=\"swipe($event.type)\"\n         (swipeup)=\"swipe($event.type)\"\n         (swipedown)=\"swipe($event.type)\"\n    >\n      <img\n        class=\"mySlides img-responsive\"\n        [src]=\"'assets/images/' + document.image\">\n    </div>\n\n    <a class=\"categoryDashboardLink\" [routerLink]=\"['/list', 'incoming_invoice']\">Rechnungseingang</a>\n    <a class=\"categoryDashboardLink\" [routerLink]=\"['/list', 'outgoing_invoice']\">Rechnungsausgang</a>\n    <a class=\"categoryDashboardLink\" [routerLink]=\"['/list', 'cash_register']\">Kasse</a>\n    <a class=\"categoryDashboardLink\" [routerLink]=\"['/list', 'other']\">Sonstige</a>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -407,7 +407,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/list/list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2 *ngIf=\"!hasDocuments()\">\n  Keine Belege vorhanden!\n</h2>\n\n<div *ngIf=\"hasDocuments()\">\n  <h1>{{categoryName}}</h1>\n  <h3>{{currentDocument.type}}</h3>\n  <div\n    (swipeup)=\"swipe($event.type)\"\n    (swipedown)=\"swipe($event.type)\"\n    (swipeleft)=\"swipe($event.type)\"\n    (swiperight)=\"swipe($event.type)\"\n  >\n    <img class=\"img-responsive\" src=\"assets/images/{{currentDocument.image}}\">\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <div *ngIf=\"!hasDocuments()\"\n       class=\"fill\"\n       (swipeup)=\"swipe($event.type)\">\n    <h2>\n      Keine Belege vorhanden!\n    </h2>\n  </div>\n\n  <div *ngIf=\"hasDocuments()\">\n    <h1>{{categoryName}}</h1>\n    <h3>{{currentDocument.type}}</h3>\n    <div\n      (swipeup)=\"swipe($event.type)\"\n      (swipedown)=\"swipe($event.type)\"\n      (swipeleft)=\"swipe($event.type)\"\n      (swiperight)=\"swipe($event.type)\"\n    >\n      <img class=\"img-responsive\" src=\"assets/images/{{currentDocument.image}}\">\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -663,14 +663,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DocumentsService = (function () {
     function DocumentsService() {
         this.documents = [
-            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](1, 'invoice1.png'),
-            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](2, 'invoice2.png'),
-            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](3, 'invoice3.jpg'),
-            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](4, 'invoice4.jpg'),
-            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](5, 'invoice5.png'),
             new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](6, 'invoice6.jpg'),
             new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](7, 'invoice7.jpg'),
-            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](8, 'invoice8.jpg')
+            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](8, 'invoice8.jpg'),
+            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](9, 'invoice9.png'),
+            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](10, 'invoice10.png'),
+            new __WEBPACK_IMPORTED_MODULE_1__document__["a" /* Document */](11, 'invoice11.png'),
         ];
     }
     DocumentsService.prototype.getAllDocuments = function () {

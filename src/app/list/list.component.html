@@ -1,16 +1,22 @@
-<h2 *ngIf="!hasDocuments()">
-  Keine Belege vorhanden!
-</h2>
+<div class="container">
+  <div *ngIf="!hasDocuments()"
+       class="fill"
+       (swipeup)="swipe($event.type)">
+    <h2>
+      Keine Belege vorhanden!
+    </h2>
+  </div>
 
-<div *ngIf="hasDocuments()">
-  <h1>{{categoryName}}</h1>
-  <h3>{{currentDocument.type}}</h3>
-  <div
-    (swipeup)="swipe($event.type)"
-    (swipedown)="swipe($event.type)"
-    (swipeleft)="swipe($event.type)"
-    (swiperight)="swipe($event.type)"
-  >
-    <img class="img-responsive" src="assets/images/{{currentDocument.image}}">
+  <div *ngIf="hasDocuments()">
+    <h1>{{categoryName}}</h1>
+    <h3>{{currentDocument.type}}</h3>
+    <div
+      (swipeup)="swipe($event.type)"
+      (swipedown)="swipe($event.type)"
+      (swipeleft)="swipe($event.type)"
+      (swiperight)="swipe($event.type)"
+    >
+      <img class="img-responsive" src="assets/images/{{currentDocument.image}}">
+    </div>
   </div>
 </div>
