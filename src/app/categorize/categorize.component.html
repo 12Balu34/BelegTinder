@@ -1,13 +1,13 @@
 <h1>{{category.name}}</h1>
 
-<p>
+<h3>
   Belegtyp wählen:
-</p>
+<h3>
 
-<span *ngFor="let documentType of allDocumentTypes">
+<p *ngFor="let documentType of allDocumentTypes">
   <input type="radio" name="document_type" value="{{documentType}}" [(ngModel)]="selectedDocumentType"> {{documentType}} <br>
-</span>
-
-<p>
-  <a routerLink="/dashboard">Zurück</a>
 </p>
+
+<div>
+  <a class="categoryBackLink" routerLink="/dashboard">Zurück</a>
+</div>
