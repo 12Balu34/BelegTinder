@@ -228,7 +228,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/categorize/categorize.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>{{category.name}}</h1>\n\n<h3>\n  Belegtyp wählen:\n<h3>\n\n<p *ngFor=\"let documentType of allDocumentTypes\">\n  <input type=\"radio\" name=\"document_type\" value=\"{{documentType}}\" [(ngModel)]=\"selectedDocumentType\"> {{documentType}} <br>\n</p>\n\n<div>\n  <a class=\"categoryBackLink\" routerLink=\"/dashboard\">Zurück</a>\n</div>\n"
+module.exports = "<h1>{{category.name}}</h1>\n\n<h3>\n  Belegtyp wählen:\n<h3>\n\n<p *ngFor=\"let documentType of allDocumentTypes\">\n  <label>\n    <input type=\"radio\" name=\"document_type\" value=\"{{documentType}}\" [(ngModel)]=\"selectedDocumentType\"> {{documentType}} <br>\n  </label>\n</p>\n\n<div>\n  <a class=\"categoryBackLink\" routerLink=\"/dashboard\">Zurück</a>\n</div>\n"
 
 /***/ }),
 
