@@ -1,10 +1,16 @@
-<h1>{{currentDocument.category}}</h1>
-<h2>{{currentDocument.type}}</h2>
-<p>
-  <img src="assets/images/{{currentDocument.image}}">
-</p>
+<div *ngIf="!hasDocuments()">
+  Keine Belege vorhanden!
+</div>
 
-<a (click)="previousDocument()">Zurück</a>
-<a (click)="nextDocument()">Vor</a>
-
-<button>Rückgängig</button>
+<div *ngIf="hasDocuments()">
+  <h1>{{categoryName}}</h1>
+  <h2>{{currentDocument.type}}</h2>
+  <div
+    (swipeup)="swipe($event.type)"
+    (swipedown)="swipe($event.type)"
+    (swipeleft)="swipe($event.type)"
+    (swiperight)="swipe($event.type)"
+  >
+    <img src="assets/images/{{currentDocument.image}}">
+  </div>
+</div>

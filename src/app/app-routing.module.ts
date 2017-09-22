@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: "", redirectTo: "dashboard", pathMatch: "full"},
   {path: "dashboard", component: DashboardComponent},
   {path: "list", component: ListComponent},
-  {path: "list/:index", component: ListComponent},
+  {path: "list/:category", component: ListComponent},
   {path: "categorize/:category/:document", component: CategorizeComponent},
 ];
 

@@ -37,4 +37,8 @@ export class DashboardComponent implements OnInit {
       .filter(d => !d.category);
     this.document = this.documents[0];
   }
+
+  hasMoreDocuments() {
+    return this.documents.length > 0;
+  }
 }
